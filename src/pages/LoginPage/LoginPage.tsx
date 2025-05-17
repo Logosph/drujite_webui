@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await api.post("/api/v1/auth", {
+            const response = await api.post("/api/v1/admin/login", {
                 phone,
                 password,
             });

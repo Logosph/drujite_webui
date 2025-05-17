@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const BASE_URL = "http://89.208.87.216:8080";
+
 const getTokenFromCookie = () => {
     const match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
     return match ? match[2] : null;
@@ -7,8 +9,17 @@ const getTokenFromCookie = () => {
 
 
 const instance = axios.create({
-    baseURL: "http://89.208.87.216:8080"
+    baseURL: BASE_URL
 });
+
+const concatUrl = (additionUrl: string, usePrefix: boolean): string => {
+    let url = BASE_URL;
+    if (usePrefix) {
+        url += "/api/v1";
+    }
+    url += additionUrl;
+    return url;
+}
 
 instance.interceptors.request.use((config) => {
     const token = getTokenFromCookie();
@@ -34,3 +45,4 @@ instance.interceptors.response.use(
 );
 
 export default instance;
+export {concatUrl};

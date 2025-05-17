@@ -15,7 +15,7 @@ const BaseCard: React.FC<BaseCardProps> = ({
                                                }
                                            }) => {
     return (
-        <div className={`base-card ${className}`} onClick={onClick}>
+        <div className={`${className} base-card`} onClick={onClick}>
             {children}
         </div>
     );
