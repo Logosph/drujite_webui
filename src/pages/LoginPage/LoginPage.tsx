@@ -17,16 +17,9 @@ const LoginPage: React.FC = () => {
                 const response = await api.get("/api/v1/user/me");
                 navigate("/");
             } catch (error) {
-                // Здесь можно обработать ошибку дополнительно, если нужно
-                console.error("Ошибка при получении данных пользователя", error);
-                // 401 автоматически редиректит в интерсепторе
-                // Остальные ошибки можешь обработать тут
-                if (error.response && error.response.status !== 401) {
-                    navigate("/error");
-                }
+
             }
         };
-
         fetchUser();
     }, [navigate]);
 
