@@ -1,0 +1,18 @@
+.default-button {
+    width: fit-content;
+    background-color: var(--surface-container);
+    color: var(--on-secondary-container);
+    padding: 0.5rem;
+    box-shadow: 1px 1px 0 3px var(--outline);
+    border-radius: 0.3rem;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+
+.default-button:hover {
+    box-shadow: 0.5px 0.5px 0 2.5px var(--outline);
+}

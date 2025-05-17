@@ -1,0 +1,21 @@
+.default-input {
+    width: 18rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-top: 1px solid var(--outline);
+    border-left: 1px solid var(--outline);
+    border-right: 3px solid var(--outline);
+    border-bottom: 3px solid var(--outline);
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+
+.default-input:focus {
+    border-top-color: #3b82f6;
+    border-left-color: #3b82f6;
+    border-right-color: #3b82f6;
+    border-bottom-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}

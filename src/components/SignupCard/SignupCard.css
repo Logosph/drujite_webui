@@ -1,0 +1,21 @@
+.signup-card {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    background-color: var(--surface-container);
+    /*border: 2px solid var(--outline);*/
+    box-shadow: 0 1px 6px var(--shadow);
+    border-radius: 1.5rem;
+    padding: 1rem;
+}
+
+.input-form {
+    align-items: center;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-content: center;
+}

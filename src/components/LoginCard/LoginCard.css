@@ -1,0 +1,8 @@
+.input-form {
+    align-items: center;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-content: center;
+}

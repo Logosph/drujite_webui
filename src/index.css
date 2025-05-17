@@ -1,3 +1,56 @@
+:root {
+  --primary: rgb(127, 86, 15);
+  --primary-hover: rgb(68, 46, 9);
+  --surface-tint: rgb(127 86 15);
+  --on-primary: rgb(255 255 255);
+  --primary-container: rgb(255 221 178);
+  --on-primary-container: rgb(98 64 0);
+  --secondary: rgb(111 91 64);
+  --on-secondary: rgb(255 255 255);
+  --secondary-container: rgb(250 222 188);
+  --on-secondary-container: rgb(86 68 42);
+  --tertiary: rgb(81 100 64);
+  --on-tertiary: rgb(255 255 255);
+  --tertiary-container: rgb(211 234 188);
+  --on-tertiary-container: rgb(58 76 42);
+  --error: rgb(186 26 26);
+  --on-error: rgb(255 255 255);
+  --error-container: rgb(255 218 214);
+  --on-error-container: rgb(147 0 10);
+  --background: rgb(255 248 244);
+  --on-background: rgb(32 27 19);
+  --surface: rgb(255 248 244);
+  --on-surface: rgb(32 27 19);
+  --surface-variant: rgb(240 224 207);
+  --on-surface-variant: rgb(79 69 57);
+  --outline: rgb(129 117 103);
+  --outline-variant: rgb(211 196 180);
+  --shadow: rgb(0 0 0);
+  --scrim: rgb(0 0 0);
+  --inverse-surface: rgb(54 47 39);
+  --inverse-on-surface: rgb(251 239 226);
+  --inverse-primary: rgb(243 189 110);
+  --primary-fixed: rgb(255 221 178);
+  --on-primary-fixed: rgb(41 24 0);
+  --primary-fixed-dim: rgb(243 189 110);
+  --on-primary-fixed-variant: rgb(98 64 0);
+  --secondary-fixed: rgb(250 222 188);
+  --on-secondary-fixed: rgb(39 25 4);
+  --secondary-fixed-dim: rgb(221 194 161);
+  --on-secondary-fixed-variant: rgb(86 68 42);
+  --tertiary-fixed: rgb(211 234 188);
+  --on-tertiary-fixed: rgb(15 32 4);
+  --tertiary-fixed-dim: rgb(183 206 162);
+  --on-tertiary-fixed-variant: rgb(58 76 42);
+  --surface-dim: rgb(228 216 204);
+  --surface-bright: rgb(255 248 244);
+  --surface-container-lowest: rgb(255 255 255);
+  --surface-container-low: rgb(254 242 229);
+  --surface-container: rgb(249 236 223);
+  --surface-container-high: rgb(243 230 218);
+  --surface-container-highest: rgb(237 224 212);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

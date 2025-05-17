@@ -1,0 +1,33 @@
+.options-card {
+    flex: 1;
+    margin: 1rem;
+    padding: 0;
+    height: 30vh;
+    box-shadow: 2px 2px 0 4px var(--outline);
+    cursor: pointer;
+    gap: 0;
+    transition: box-shadow 0.2s ease;
+}
+
+.options-card:hover {
+    box-shadow: 0.5px 0.5px 0 2.5px var(--outline);
+}
+
+.options-card-image {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+}
+
+.options-card-title {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    align-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+}
