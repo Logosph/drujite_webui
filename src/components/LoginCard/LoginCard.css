@@ -6,3 +6,12 @@
     gap: 16px;
     align-content: center;
 }
+
+.login-card {
+    padding: 1.5rem;
+}
+
+.login-card__layout {
+    gap: 16px;
+    align-items: center;
+}

@@ -41,7 +41,7 @@ const LoginPage: React.FC = () => {
     };
 
     return (
-        <div className="wrapper">
+        <div className="login-wrapper">
             <LoginCard
                 phone={phone}
                 password={password}

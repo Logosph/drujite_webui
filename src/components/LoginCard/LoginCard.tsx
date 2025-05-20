@@ -4,6 +4,7 @@ import DefaultButton from "../DefaultButton/DefaultButton";
 import {Link} from "react-router-dom";
 import "./LoginCard.css";
 import BaseCard from "../BaseCard/BaseCard";
+import LinearLayout from "../Layouts/LinearLayout";
 
 interface LoginCardProps {
     phone: string;
@@ -23,30 +24,34 @@ const LoginCard: React.FC<LoginCardProps> = ({
                                                  onLogin,
                                              }) => {
     return (
-        <BaseCard>
-            <h2 className="text-2xl font-semibold mb-6 text-center text-white">Вход</h2>
-            <div className="input-form">
-                <DefaultInput
-                    type="text"
-                    placeholder="Телефон"
-                    value={phone}
-                    onChange={onPhoneChange}
-                />
-                <DefaultInput
-                    type="password"
-                    placeholder="Пароль"
-                    value={password}
-                    onChange={onPasswordChange}
-                />
+        <BaseCard className="login-card">
+            <LinearLayout className="login-card__layout">
 
-                <DefaultButton onClick={onLogin}>Войти</DefaultButton>
 
-                {message && (
-                    <div className="mt-4 text-sm text-center text-white">{message}</div>
-                )}
+                <h2 className="text-2xl font-semibold mb-6 text-center text-white">Вход</h2>
+                <div className="input-form">
+                    <DefaultInput
+                        type="text"
+                        placeholder="Телефон"
+                        value={phone}
+                        onChange={onPhoneChange}
+                    />
+                    <DefaultInput
+                        type="password"
+                        placeholder="Пароль"
+                        value={password}
+                        onChange={onPasswordChange}
+                    />
 
-            </div>
-            <p>Ещё нет аккаунта? <Link to="/signup">Зарегистрироваться</Link></p>
+                    <DefaultButton onClick={onLogin}>Войти</DefaultButton>
+
+                    {message && (
+                        <div className="mt-4 text-sm text-center text-white">{message}</div>
+                    )}
+
+                </div>
+                <p>Ещё нет аккаунта? <Link to="/signup">Зарегистрироваться</Link></p>
+            </LinearLayout>
         </BaseCard>
     );
 };
