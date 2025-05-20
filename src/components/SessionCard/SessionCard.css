@@ -6,5 +6,59 @@
 
 }
 
-.session-card__layout {
+h2 {
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
 }
+
+.session-card__wrapper {
+    justify-content: space-between;
+}
+
+.session-card__description {
+    font-size: 1.5rem;
+}
+
+.session-card__title-layout {
+    align-items: center;
+}
+
+.session-card__icon {
+    width: 4rem;           /* можно подогнать по размеру текста h2 */
+    height: 4rem;
+    object-fit: cover;     /* кроп по центру */
+    border-radius: 50%;    /* кружок */
+    margin-right: 1rem;    /* отступ от текста */
+}
+
+.session-card__date {
+    font-size: 1.5rem;
+}
+
+.session-card__layout {
+    width: 50%;
+}
+
+.session-card__date-ic {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    filter: invert(0%) sepia(87%) saturate(7500%) hue-rotate(356deg) brightness(0) saturate(100%);
+    border-radius: 0;
+}
+
+.session-card__delete-wrapper {
+    height: fit-content;
+    width: fit-content;
+    justify-self: left;
+    align-self: center;
+    align-content: center;
+}
+
+.session-card__delete_button {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+}
+

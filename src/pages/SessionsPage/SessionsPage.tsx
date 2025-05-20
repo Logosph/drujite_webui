@@ -4,6 +4,7 @@ import api, {concatUrl} from "../../data/axios-instance"
 import LinearLayout from "../../components/Layouts/LinearLayout";
 import internal from "node:stream";
 import SessionCard from "../../components/SessionCard/SessionCard";
+import SessionModal from "./SessionModal/SessionModal";
 
 
 interface Session {
@@ -20,6 +21,13 @@ const SessionsPage: React.FC = () => {
     const [sessions, setSessions] = useState<Session[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleAddSession = (newSession: Session) => {
+        setSessions(prev => [newSession, ...prev]);
+    };
+
 
     useEffect(() => {
         const fetchSessions = async () => {
@@ -40,17 +48,24 @@ const SessionsPage: React.FC = () => {
     if (error) return <p>Ошибка: {error}</p>;
 
     return (
+        <>
+            <LinearLayout className="wrapper">
+                {sessions.map((session) => (
 
-        <LinearLayout className="wrapper">
-            {sessions.map((session) => (
+                    <SessionCard id={session.id} name={session.name} description={session.description}
+                                 startDate={session.startDate} endDate={session.endDate}
+                                 imageUrl={session.imageUrl}/>
 
-                <SessionCard id={session.id} name={session.name} description={session.description}
-                             startDate={session.startDate} endDate={session.endDate}
-                             imageUrl={session.imageUrl}/>
+                ))}
+            </LinearLayout>
 
-            ))}
-        </LinearLayout>
+            <button className="floating-button" onClick={() => setShowModal(true)}>
+                <img src="/icons/add_icon.svg" alt="Добавить"/>
+            </button>
 
+            {showModal && <SessionModal onClose={() => setShowModal(false)} onAddSession={handleAddSession}/>}
+
+        </>
     );
 };
 

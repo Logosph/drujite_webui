@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://89.208.87.216:8080";
+const BASE_URL = "https://divinaition.online/drujite";
 
 const getTokenFromCookie = () => {
     const match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));

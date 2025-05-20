@@ -28,26 +28,26 @@ const MainPage: React.FC = () => {
 
 
     const navigate = useNavigate();
-
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await api.get("/api/v1/user/me");
-                setUser(response.data);
-            } catch (error) {
-                // Здесь можно обработать ошибку дополнительно, если нужно
-                console.error("Ошибка при получении данных пользователя", error);
-                // 401 автоматически редиректит в интерсепторе
-                // Остальные ошибки можешь обработать тут
-                if (error.response && error.response.status !== 401) {
-                    navigate("/error");
-                }
-            }
-        };
-
-        fetchUser();
-    }, [navigate]);
+    //
+    // const [user, setUser] = useState(null);
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         try {
+    //             const response = await api.get("/api/v1/user/me");
+    //             setUser(response.data);
+    //         } catch (error) {
+    //             // Здесь можно обработать ошибку дополнительно, если нужно
+    //             console.error("Ошибка при получении данных пользователя", error);
+    //             // 401 автоматически редиректит в интерсепторе
+    //             // Остальные ошибки можешь обработать тут
+    //             if (error.response && error.response.status !== 401) {
+    //                 navigate("/error");
+    //             }
+    //         }
+    //     };
+    //
+    //     fetchUser();
+    // }, [navigate]);
 
     return (
         <LinearLayout orientation="vertical" className="main-page-wrapper">
