@@ -49,6 +49,7 @@ const SessionModal: React.FC<Props> = ({onClose, onAddSession}) => {
 
             onAddSession(response.data);
             onClose();
+            window.location.reload()
         } catch (err) {
             alert("Ошибка при создании сессии");
         }

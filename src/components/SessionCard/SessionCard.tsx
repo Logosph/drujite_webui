@@ -23,6 +23,7 @@ const SessionCard: React.FC<SessionCardProps> = ({
         await api.delete(
             `/api/v1/session?id=${id}`
         )
+        window.location.reload()
     }
 
     return (

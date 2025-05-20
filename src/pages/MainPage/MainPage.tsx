@@ -58,15 +58,15 @@ const MainPage: React.FC = () => {
                     <p className="title-card-description">Управляйте информацией о сменах, кланах, добавляйте и редактируйте новости и многое другое!</p>
                 </BaseCard>
                 <BaseCard className="title-page-image-wrapper">
-                    <img src="/title_page.jpg" alt="смена" className="title-page-image"/>
+                    <img src={process.env.PUBLIC_URL + "/img_fish.png"} alt="смена" className="title-page-image"/>
                 </BaseCard>
             </LinearLayout>
 
             <h2 className="tools-header">Инструменты</h2>
 
             <LinearLayout orientation="horizontal" className="lower-cards-wrapper">
-                <OptionsCard imgSrc="/title_page.jpg" title="Смены" imgAlt="смена" onClick={() => { navigate("/sessions") }}/>
-                <OptionsCard imgSrc="/title_page.jpg" title="Кланы" imgAlt="смена" onClick={() => {}}/>
+                <OptionsCard imgSrc="/img_fish.png" title="Смены" imgAlt="смена" onClick={() => { navigate("/sessions") }}/>
+                <OptionsCard imgSrc="/img_fish.png" title="Кланы" imgAlt="смена" onClick={() => {}}/>
                 {/*<OptionsCard imgSrc="/title_page.jpg" title="Новости" imgAlt="смена" onClick={() => {}}/>*/}
             </LinearLayout>
         </LinearLayout>

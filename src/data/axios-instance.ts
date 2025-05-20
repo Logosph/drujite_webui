@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://divinaition.online/drujite";
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 const getTokenFromCookie = () => {
     const match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
@@ -12,7 +12,7 @@ const instance = axios.create({
     baseURL: BASE_URL
 });
 
-const concatUrl = (additionUrl: string, usePrefix: boolean): string => {
+const concatUrl = (additionUrl: string, usePrefix: boolean): string | undefined => {
     let url = BASE_URL;
     if (usePrefix) {
         url += "/api/v1";
