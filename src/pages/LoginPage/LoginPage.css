@@ -3,10 +3,50 @@ body {
 }
 
 .login-wrapper {
+    min-height: 100vh;
     display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--surface), var(--surface-container-low));
+    position: relative;
+    overflow: hidden;
+}
+
+.login-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--primary-container) 0%, transparent 70%);
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.login-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--secondary-container) 0%, transparent 70%);
+    opacity: 0.1;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.login-wrapper > * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 480px) {
+    .login-wrapper {
+        padding: 0;
+        background: var(--surface);
+    }
 }

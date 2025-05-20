@@ -1,0 +1,172 @@
+.character-card {
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-card__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.character-card__delete-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.character-card__delete-button:hover {
+    background-color: var(--surface-container-low);
+}
+
+.character-card__delete-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+.character-card__image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.character-card__name {
+    margin: 0;
+    font-size: 20px;
+    color: var(--on-surface);
+    font-weight: 500;
+}
+
+.character-card__info {
+    margin-bottom: 12px;
+}
+
+.character-card__player,
+.character-card__clan {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--on-surface-variant);
+}
+
+.character-card__expanded-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+    height: 0;
+}
+
+.character-card__expanded-content[style*="display: flex"] {
+    height: auto;
+}
+
+.character-card__story,
+.character-card__goals {
+    background: var(--surface-container-highest);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.character-card__story.expanded,
+.character-card__goals.expanded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.character-card__story h4,
+.character-card__goals h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: var(--on-surface);
+    font-weight: 500;
+}
+
+.character-card__story p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--on-surface);
+}
+
+.character-card__goals-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.character-card__goal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--on-surface);
+    padding: 8px 12px;
+    background: var(--surface-container);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+.character-card__goal.expanded {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.character-card__goal.completed {
+    background: var(--surface-container-low);
+    color: var(--on-surface-variant);
+}
+
+.character-card__goal-status {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.character-card__expand {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.character-card__expand-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.character-card__expand-icon.expanded {
+    transform: rotate(180deg);
+} 

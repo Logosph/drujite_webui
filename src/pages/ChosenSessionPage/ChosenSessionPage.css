@@ -1,0 +1,268 @@
+.chosen-session-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - var(--navbar-height));
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.session-header {
+    flex-shrink: 0;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.content-layout {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+}
+
+.main-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    padding: 24px;
+}
+
+.side-sections {
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 0;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    padding: 24px;
+}
+
+.section h3 {
+    margin: 0 0 16px 0;
+    color: var(--on-surface);
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0 24px;
+}
+
+.section-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.toggle-button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: var(--surface-container);
+    color: var(--on-surface);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toggle-button:hover {
+    background: var(--surface-container-high);
+}
+
+.toggle-button.active {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.section-content {
+    flex: 1;
+    width: 100%;
+    background: var(--surface-container-lower);
+    border-radius: 12px;
+    min-height: 0;
+    overflow-y: auto;
+    margin: 0 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.characters-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.clans-section, .schedule-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.clans-section .section-content,
+.schedule-section .section-content {
+    padding: 16px;
+}
+
+/* Убираем ненужные стили, так как теперь используем BaseCard */
+.session-info-card {
+    margin-bottom: 24px;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.session-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.session-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.session-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.session-dates {
+    display: flex;
+    gap: 24px;
+    color: #666;
+    font-size: 14px;
+}
+
+.tab-container {
+    margin-top: 24px;
+}
+
+.tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+.tab-button {
+    padding: 12px 24px;
+    border: none;
+    background: var(--surface-container);
+    color: var(--on-surface);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+    background: var(--surface-container-high);
+}
+
+.tab-button.active {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.tab-content {
+    min-height: 300px;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .chosen-session-page {
+        padding: 16px;
+    }
+
+    .content-layout {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .main-section,
+    .side-sections {
+        width: 100%;
+    }
+
+    .main-section,
+    .section {
+        padding: 16px;
+    }
+
+    .section h3,
+    .section-header {
+        padding: 0 16px;
+    }
+
+    .section-content {
+        margin: 0 16px 16px 16px;
+    }
+
+    .side-sections {
+        gap: 16px;
+    }
+
+    .characters-content {
+        padding: 12px;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chosen-session-page {
+        padding: 12px;
+    }
+
+    .session-header {
+        margin-bottom: 16px;
+    }
+
+    .content-layout {
+        gap: 12px;
+    }
+
+    .main-section,
+    .section {
+        padding: 12px;
+    }
+
+    .section h3,
+    .section-header {
+        padding: 0 12px;
+    }
+
+    .section-content {
+        margin: 0 12px 12px 12px;
+    }
+
+    .characters-content {
+        padding: 8px;
+        gap: 8px;
+    }
+} 

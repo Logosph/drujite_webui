@@ -1,27 +1,32 @@
 import React from "react";
-import DefaultInput from "../DefaultInput/DefaultInput";
-import DefaultButton from "../DefaultButton/DefaultButton";
-import {Link} from "react-router-dom";
 import "./OptionsCard.css";
 import BaseCard from "../BaseCard/BaseCard";
+import LinearLayout from "../Layouts/LinearLayout";
 
 interface OptionsCardProps {
     imgSrc: string;
     imgAlt: string;
-    onClick: () => void
+    onClick: () => void;
     title: string;
+    description: string;
 }
 
 const OptionsCard: React.FC<OptionsCardProps> = ({
-                                                     imgSrc,
-                                                     imgAlt,
-                                                     onClick,
-                                                     title
-                                                 }) => {
+    imgSrc,
+    imgAlt,
+    onClick,
+    title,
+    description
+}) => {
     return (
         <BaseCard className="options-card" onClick={onClick}>
-            <img src={imgSrc} alt={imgAlt} className="options-card-image"/>
-            <p className="options-card-title">{title}</p>
+            <LinearLayout orientation="vertical" className="options-card__layout">
+                <img src={imgSrc} alt={imgAlt} className="options-card__image"/>
+                <div className="options-card__content">
+                    <h3 className="options-card__title">{title}</h3>
+                    <p className="options-card__description">{description}</p>
+                </div>
+            </LinearLayout>
         </BaseCard>
     );
 };

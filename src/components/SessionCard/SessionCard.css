@@ -1,64 +1,177 @@
 .session-card {
     width: 100%;
-    padding: 1.5rem;
+    padding: 24px;
     box-sizing: border-box;
-
-
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-h2 {
-    font-size: 3rem;
-    margin: 0;
-    padding: 0;
+.session-card.clickable {
+    cursor: pointer;
+}
+
+.session-card.clickable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .session-card__wrapper {
     justify-content: space-between;
+    gap: 24px;
 }
 
-.session-card__description {
-    font-size: 1.5rem;
+.session-card__layout {
+    flex: 1;
+    gap: 16px;
+    min-width: 0;
 }
 
 .session-card__title-layout {
     align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .session-card__icon {
-    width: 4rem;           /* можно подогнать по размеру текста h2 */
-    height: 4rem;
-    object-fit: cover;     /* кроп по центру */
-    border-radius: 50%;    /* кружок */
-    margin-right: 1rem;    /* отступ от текста */
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    color: var(--on-surface);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.session-card__description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--on-surface-variant);
+    margin: 0;
+    word-break: break-word;
+}
+
+.Dates {
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .session-card__date {
-    font-size: 1.5rem;
-}
-
-.session-card__layout {
-    width: 50%;
+    font-size: 14px;
+    color: var(--on-surface-variant);
+    margin: 0;
+    white-space: nowrap;
 }
 
 .session-card__date-ic {
-    width: 4rem;
-    height: 4rem;
+    width: 20px;
+    height: 20px;
     object-fit: cover;
     filter: invert(0%) sepia(87%) saturate(7500%) hue-rotate(356deg) brightness(0) saturate(100%);
-    border-radius: 0;
 }
 
 .session-card__delete-wrapper {
     height: fit-content;
     width: fit-content;
-    justify-self: left;
     align-self: center;
-    align-content: center;
+    flex-shrink: 0;
 }
 
 .session-card__delete_button {
-    height: 80px;
-    width: 80px;
+    height: 32px;
+    width: 32px;
     object-fit: cover;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
 }
+
+.session-card__delete_button:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .session-card {
+        padding: 16px;
+    }
+
+    .session-card__wrapper {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .session-card__layout {
+        width: 100%;
+    }
+
+    .session-card__title-layout {
+        gap: 12px;
+    }
+
+    .session-card__icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .session-card__description {
+        font-size: 14px;
+    }
+
+    .Dates {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .session-card__delete-wrapper {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .session-card {
+        padding: 12px;
+    }
+
+    .session-card__wrapper {
+        gap: 12px;
+    }
+
+    .session-card__icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .session-card__description {
+        font-size: 13px;
+    }
+
+    .session-card__date {
+        font-size: 12px;
+    }
+
+    .session-card__date-ic {
+        width: 16px;
+        height: 16px;
+    }
+
+    .session-card__delete_button {
+        height: 28px;
+        width: 28px;
+    }
+}
+
 

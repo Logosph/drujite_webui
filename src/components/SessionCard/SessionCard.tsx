@@ -4,6 +4,7 @@ import BaseCard from "../BaseCard/BaseCard";
 import LinearLayout from "../Layouts/LinearLayout";
 import "./SessionCard.css"
 import api from "../../data/axios-instance"
+import { useNavigate } from "react-router-dom";
 
 interface SessionCardProps {
     id: number;
@@ -12,13 +13,16 @@ interface SessionCardProps {
     startDate: string;
     endDate: string;
     imageUrl: string | null;
+    clickable?: boolean;
 }
 
 const SessionCard: React.FC<SessionCardProps> = ({
-                                                     id, name, description, startDate, endDate, imageUrl
+                                                     id, name, description, startDate, endDate, imageUrl, clickable = true
                                                  }) => {
+    const navigate = useNavigate();
 
-    const handleDeletion = async () => {
+    const handleDeletion = async (e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent navigation when clicking delete
         console.log(`${id} is here`)
         await api.delete(
             `/api/v1/session?id=${id}`
@@ -26,8 +30,17 @@ const SessionCard: React.FC<SessionCardProps> = ({
         window.location.reload()
     }
 
+    const handleClick = () => {
+        if (clickable) {
+            navigate(`/session/${id}`);
+        }
+    };
+
     return (
-        <BaseCard className="session-card">
+        <BaseCard 
+            className={`session-card ${clickable ? 'clickable' : ''}`} 
+            onClick={handleClick}
+        >
             <LinearLayout orientation="horizontal" className="session-card__wrapper">
                 <LinearLayout orientation="vertical" className="session-card__layout">
                     <LinearLayout orientation="horizontal" className="session-card__title-layout">

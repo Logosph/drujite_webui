@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./SessionModal.css";
 import api from "../../../data/axios-instance"
+import DefaultButton from "../../../components/DefaultButton/DefaultButton";
 
 interface Props {
     onClose: () => void;
@@ -56,17 +57,72 @@ const SessionModal: React.FC<Props> = ({onClose, onAddSession}) => {
     };
 
     return (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div className="modal">
-                <h2>Новая сессия</h2>
-                <input type="text" name="name" placeholder="Название" value={form.name} onChange={handleChange}/>
-                <textarea name="description" placeholder="Описание" value={form.description} onChange={handleChange}/>
-                <input type="datetime-local" name="startDate" value={form.startDate} onChange={handleChange}/>
-                <input type="datetime-local" name="endDate" value={form.endDate} onChange={handleChange}/>
-                <input type="file" accept="image/*" onChange={handleFileChange}/>
+                <h2>Новая смена</h2>
+                
+                <div className="modal-field">
+                    <label htmlFor="name">Название</label>
+                    <input 
+                        id="name"
+                        type="text" 
+                        name="name" 
+                        placeholder="Введите название смены" 
+                        value={form.name} 
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="modal-field">
+                    <label htmlFor="description">Описание</label>
+                    <textarea 
+                        id="description"
+                        name="description" 
+                        placeholder="Введите описание смены" 
+                        value={form.description} 
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="modal-field">
+                    <label htmlFor="startDate">Дата начала</label>
+                    <input 
+                        id="startDate"
+                        type="datetime-local" 
+                        name="startDate" 
+                        value={form.startDate} 
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="modal-field">
+                    <label htmlFor="endDate">Дата окончания</label>
+                    <input 
+                        id="endDate"
+                        type="datetime-local" 
+                        name="endDate" 
+                        value={form.endDate} 
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="modal-field">
+                    <label htmlFor="image">Изображение</label>
+                    <input 
+                        id="image"
+                        type="file" 
+                        accept="image/*" 
+                        onChange={handleFileChange}
+                    />
+                </div>
+
                 <div className="buttons">
-                    <button onClick={handleSubmit}>Сохранить</button>
-                    <button onClick={onClose}>Закрыть</button>
+                    <button className="modal-button secondary" onClick={onClose}>
+                        Отмена
+                    </button>
+                    <button className="modal-button primary" onClick={handleSubmit}>
+                        Создать
+                    </button>
                 </div>
             </div>
         </div>

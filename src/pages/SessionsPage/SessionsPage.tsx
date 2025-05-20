@@ -1,11 +1,8 @@
 import React, {useEffect, useState} from "react";
 import "./SessionsPage.css";
-import api, {concatUrl} from "../../data/axios-instance"
-import LinearLayout from "../../components/Layouts/LinearLayout";
-import internal from "node:stream";
+import api from "../../data/axios-instance"
 import SessionCard from "../../components/SessionCard/SessionCard";
 import SessionModal from "./SessionModal/SessionModal";
-
 
 interface Session {
     id: number;
@@ -17,17 +14,14 @@ interface Session {
 }
 
 const SessionsPage: React.FC = () => {
-
     const [sessions, setSessions] = useState<Session[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-
     const [showModal, setShowModal] = useState(false);
 
     const handleAddSession = (newSession: Session) => {
         setSessions(prev => [newSession, ...prev]);
     };
-
 
     useEffect(() => {
         const fetchSessions = async () => {
@@ -44,28 +38,82 @@ const SessionsPage: React.FC = () => {
         fetchSessions();
     }, []);
 
-    if (loading) return <p>Загрузка...</p>;
-    if (error) return <p>Ошибка: {error}</p>;
+    if (loading) {
+        return (
+            <div className="sessions-page">
+                <div className="sessions-page__header">
+                    <div>
+                        <h1 className="sessions-page__title">Загрузка...</h1>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="sessions-page">
+                <div className="sessions-page__header">
+                    <div>
+                        <h1 className="sessions-page__title">Ошибка</h1>
+                        <p className="sessions-page__subtitle">{error}</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <>
-            <LinearLayout className="wrapper">
-                {sessions.map((session) => (
+        <div className="sessions-page">
+            <div className="sessions-page__header">
+                <div>
+                    <h1 className="sessions-page__title">Смены</h1>
+                    <p className="sessions-page__subtitle">
+                        {sessions.length > 0 
+                            ? `Всего смен: ${sessions.length}` 
+                            : 'Создайте свою первую смену'}
+                    </p>
+                </div>
+            </div>
 
-                    <SessionCard id={session.id} name={session.name} description={session.description}
-                                 startDate={session.startDate} endDate={session.endDate}
-                                 imageUrl={session.imageUrl}/>
-
-                ))}
-            </LinearLayout>
+            {sessions.length > 0 ? (
+                <div className="sessions-list">
+                    {sessions.map((session) => (
+                        <SessionCard 
+                            key={session.id}
+                            id={session.id} 
+                            name={session.name} 
+                            description={session.description}
+                            startDate={session.startDate} 
+                            endDate={session.endDate}
+                            imageUrl={session.imageUrl}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className="sessions-empty">
+                    <img 
+                        src="/icons/empty_state.svg" 
+                        alt="Нет сессий" 
+                        className="sessions-empty__icon"
+                    />
+                    <p className="sessions-empty__text">
+                        У вас пока нет созданных сессий
+                    </p>
+                </div>
+            )}
 
             <button className="floating-button" onClick={() => setShowModal(true)}>
                 <img src="/icons/add_icon.svg" alt="Добавить"/>
             </button>
 
-            {showModal && <SessionModal onClose={() => setShowModal(false)} onAddSession={handleAddSession}/>}
-
-        </>
+            {showModal && (
+                <SessionModal 
+                    onClose={() => setShowModal(false)} 
+                    onAddSession={handleAddSession}
+                />
+            )}
+        </div>
     );
 };
 

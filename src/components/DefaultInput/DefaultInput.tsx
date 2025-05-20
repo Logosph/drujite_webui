@@ -6,6 +6,7 @@ interface DefaultInputProps {
     placeholder?: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    className?: string;
 }
 
 const DefaultInput: React.FC<DefaultInputProps> = ({
@@ -13,10 +14,11 @@ const DefaultInput: React.FC<DefaultInputProps> = ({
                                                        placeholder,
                                                        value,
                                                        onChange,
+                                                       className
                                                    }) => {
     return (
         <input
-            className="default-input"
+            className={`default-input ${className}`}
             type={type}
             placeholder={placeholder}
             value={value}
