@@ -10,6 +10,8 @@ import NewsCard from '../../components/NewsCard/NewsCard';
 import AddNewsCard from '../../components/NewsCard/AddNewsCard';
 import ClanCard from '../../components/ClanCard/ClanCard';
 import AddClanCard from '../../components/ClanCard/AddClanCard';
+import TimetableCard from '../../components/TimetableCard/TimetableCard';
+import AddTimetableCard from '../../components/TimetableCard/AddTimetableCard';
 import './ChosenSessionPage.css';
 
 interface Session {
@@ -45,6 +47,12 @@ interface Clan {
     description: string;
 }
 
+interface Timetable {
+    id: number;
+    sessionId: number;
+    date: string;
+}
+
 type MainContentType = 'news' | 'characters';
 
 const ChosenSessionPage: React.FC = () => {
@@ -60,6 +68,7 @@ const ChosenSessionPage: React.FC = () => {
     const [expandedNews, setExpandedNews] = useState<number[]>([]);
     const [clans, setClans] = useState<Clan[]>([]);
     const [expandedClans, setExpandedClans] = useState<number[]>([]);
+    const [timetable, setTimetable] = useState<Timetable[]>([]);
 
     const fetchNews = async () => {
         try {
@@ -79,6 +88,15 @@ const ChosenSessionPage: React.FC = () => {
             setClans(response.data);
         } catch (err) {
             console.error('Error fetching clans:', err);
+        }
+    };
+
+    const fetchTimetable = async () => {
+        try {
+            const response = await api.get<Timetable[]>(`/api/v1/timetable/session-all?sessionId=${id}`);
+            setTimetable(response.data);
+        } catch (err) {
+            console.error('Error fetching timetable:', err);
         }
     };
 
@@ -109,6 +127,7 @@ const ChosenSessionPage: React.FC = () => {
             fetchCharacters();
             fetchNews();
             fetchClans();
+            fetchTimetable();
         }
     }, [id]);
 
@@ -230,8 +249,20 @@ const ChosenSessionPage: React.FC = () => {
                     <BaseCard className="section schedule-section">
                         <h3>Расписание</h3>
                         <div className="section-content">
-                            {/* Schedule content will be here */}
-                            <p>Здесь будет расписание</p>
+                            <AddTimetableCard 
+                                sessionId={Number(id)} 
+                                onTimetableAdded={fetchTimetable}
+                            />
+                            {timetable
+                                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                                .map(item => (
+                                    <TimetableCard
+                                        key={item.id}
+                                        id={item.id}
+                                        date={item.date}
+                                        onTimetableDeleted={fetchTimetable}
+                                    />
+                                ))}
                         </div>
                     </BaseCard>
                 </div>
