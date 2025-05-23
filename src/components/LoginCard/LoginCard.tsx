@@ -15,13 +15,13 @@ interface LoginCardProps {
 }
 
 const LoginCard: React.FC<LoginCardProps> = ({
-    phone,
-    password,
-    message,
-    onPhoneChange,
-    onPasswordChange,
-    onLogin,
-}) => {
+                                                 phone,
+                                                 password,
+                                                 message,
+                                                 onPhoneChange,
+                                                 onPasswordChange,
+                                                 onLogin,
+                                             }) => {
     return (
         <BaseCard className="login-card">
             <LinearLayout className="login-card__layout">

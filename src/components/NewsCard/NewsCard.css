@@ -1,0 +1,218 @@
+.news-card {
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.news-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.news-card__image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.news-card__image-placeholder {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--surface-container-highest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: 2px dashed var(--outline);
+    overflow: hidden;
+}
+
+.news-card__image-placeholder:hover {
+    background: var(--surface-container-high);
+}
+
+.news-card__preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-card__add-photo-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+}
+
+.news-card__title {
+    margin: 0;
+    font-size: 20px;
+    color: var(--on-surface);
+    font-weight: 500;
+    flex: 1;
+}
+
+.news-card__title-input {
+    margin: 0;
+    font-size: 20px;
+    color: var(--on-surface);
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    width: 100%;
+    padding: 0;
+    outline: none;
+    border-bottom: 2px solid transparent;
+}
+
+.news-card__title-input:hover,
+.news-card__title-input:focus {
+    border-bottom-color: var(--outline);
+}
+
+.news-card__delete-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.news-card__delete-button:hover {
+    background-color: var(--surface-container-low);
+}
+
+.news-card__delete-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+.news-card__info {
+    margin-bottom: 12px;
+}
+
+.news-card__date {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--on-surface-variant);
+}
+
+.news-card__expanded-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+    height: 0;
+}
+
+.news-card__expanded-content[style*="display: flex"] {
+    height: auto;
+}
+
+.news-card__description {
+    background: var(--surface-container-highest);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--on-surface);
+}
+
+.news-card__description.expanded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.news-card__content-input {
+    background: var(--surface-container-highest);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--on-surface);
+    width: 100%;
+    min-height: 120px;
+    border: none;
+    resize: vertical;
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+
+.news-card__content-input:hover,
+.news-card__content-input:focus {
+    background: var(--surface-container-high);
+}
+
+.news-card__expand {
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.news-card__expand-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.news-card__expand-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.news-card__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 16px;
+    margin-top: auto;
+}
+
+.news-card__submit-button {
+    background: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.news-card__submit-button:hover:not(:disabled) {
+    background: var(--primary-hover);
+}
+
+.news-card__submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+} 

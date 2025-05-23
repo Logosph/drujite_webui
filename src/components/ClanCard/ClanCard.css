@@ -1,0 +1,168 @@
+.clan-card {
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.clan-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.clan-card__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    position: relative;
+    padding: 0 8px;
+}
+
+.clan-card__name {
+    margin: 0;
+    font-size: 18px;
+    color: var(--on-surface);
+    font-weight: 500;
+}
+
+.clan-card__delete-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.clan-card__delete-button:hover {
+    background-color: var(--surface-container-low);
+}
+
+.clan-card__delete-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+.clan-card__expanded-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+    height: 0;
+    padding: 0 8px;
+}
+
+.clan-card__expanded-content[style*="display: flex"] {
+    height: auto;
+}
+
+.clan-card__description {
+    background: var(--surface-container-highest);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--on-surface);
+}
+
+.clan-card__description.expanded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.clan-card__expand {
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.clan-card__expand-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.clan-card__expand-icon.expanded {
+    transform: rotate(180deg);
+}
+
+/* Стили для формы добавления клана */
+.add-clan-card .clan-card__name-input {
+    margin: 0;
+    font-size: 18px;
+    color: var(--on-surface);
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border-bottom: 2px solid transparent;
+}
+
+.add-clan-card .clan-card__name-input:hover,
+.add-clan-card .clan-card__name-input:focus {
+    border-bottom-color: var(--outline);
+}
+
+.add-clan-card .clan-card__description-input {
+    background: var(--surface-container-highest);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--on-surface);
+    width: calc(100% - 16px);
+    min-height: 80px;
+    border: none;
+    resize: vertical;
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+
+.add-clan-card .clan-card__description-input:hover,
+.add-clan-card .clan-card__description-input:focus {
+    background: var(--surface-container-high);
+}
+
+.add-clan-card .clan-card__submit-button {
+    background: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: flex-end;
+    margin: 4px 8px 0;
+}
+
+.add-clan-card .clan-card__submit-button:hover:not(:disabled) {
+    background: var(--primary-hover);
+}
+
+.add-clan-card .clan-card__submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+} 

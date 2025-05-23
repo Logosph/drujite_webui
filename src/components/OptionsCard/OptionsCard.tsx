@@ -12,12 +12,12 @@ interface OptionsCardProps {
 }
 
 const OptionsCard: React.FC<OptionsCardProps> = ({
-    imgSrc,
-    imgAlt,
-    onClick,
+                                                     imgSrc,
+                                                     imgAlt,
+                                                     onClick,
     title,
     description
-}) => {
+                                                 }) => {
     return (
         <BaseCard className="options-card" onClick={onClick}>
             <LinearLayout orientation="vertical" className="options-card__layout">

@@ -6,6 +6,10 @@ import api from '../../data/axios-instance';
 import SessionCard from '../../components/SessionCard/SessionCard';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
 import BaseCard from '../../components/BaseCard/BaseCard';
+import NewsCard from '../../components/NewsCard/NewsCard';
+import AddNewsCard from '../../components/NewsCard/AddNewsCard';
+import ClanCard from '../../components/ClanCard/ClanCard';
+import AddClanCard from '../../components/ClanCard/AddClanCard';
 import './ChosenSessionPage.css';
 
 interface Session {
@@ -26,6 +30,21 @@ interface Character {
     imageUrl: string;
 }
 
+interface NewsItem {
+    id: number;
+    sessionId: number;
+    title: string;
+    content: string;
+    dateTime: string;
+    imageUrl: string;
+}
+
+interface Clan {
+    id: number;
+    name: string;
+    description: string;
+}
+
 type MainContentType = 'news' | 'characters';
 
 const ChosenSessionPage: React.FC = () => {
@@ -35,6 +54,33 @@ const ChosenSessionPage: React.FC = () => {
     const [mainContent, setMainContent] = useState<MainContentType>('news');
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [news, setNews] = useState<NewsItem[]>([]);
+    const [newsLoading, setNewsLoading] = useState<boolean>(true);
+    const [newsError, setNewsError] = useState<string | null>(null);
+    const [expandedNews, setExpandedNews] = useState<number[]>([]);
+    const [clans, setClans] = useState<Clan[]>([]);
+    const [expandedClans, setExpandedClans] = useState<number[]>([]);
+
+    const fetchNews = async () => {
+        try {
+            const response = await api.get<NewsItem[]>(`/api/v1/news/session?sessionId=${id}`);
+            setNews(response.data);
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : "Ошибка при загрузке новостей";
+            setNewsError(errorMessage);
+        } finally {
+            setNewsLoading(false);
+        }
+    };
+
+    const fetchClans = async () => {
+        try {
+            const response = await api.get<Clan[]>(`/api/v1/clan/session-all?sessionId=${id}`);
+            setClans(response.data);
+        } catch (err) {
+            console.error('Error fetching clans:', err);
+        }
+    };
 
     useEffect(() => {
         const fetchSession = async () => {
@@ -61,8 +107,18 @@ const ChosenSessionPage: React.FC = () => {
         if (id) {
             fetchSession();
             fetchCharacters();
+            fetchNews();
+            fetchClans();
         }
     }, [id]);
+
+    const toggleNewsExpand = (newsId: number) => {
+        setExpandedNews(prev => prev.includes(newsId) ? prev.filter(id => id !== newsId) : [...prev, newsId]);
+    };
+
+    const toggleClanExpand = (clanId: number) => {
+        setExpandedClans(prev => prev.includes(clanId) ? prev.filter(id => id !== clanId) : [...prev, clanId]);
+    };
 
     if (loading) return <div>Загрузка...</div>;
     if (error) return <div>Ошибка: {error}</div>;
@@ -70,7 +126,7 @@ const ChosenSessionPage: React.FC = () => {
 
     return (
         <div className="chosen-session-page">
-            <div className="session-header">
+                    <div className="session-header">
                 <SessionCard
                     id={session.id}
                     name={session.name}
@@ -80,29 +136,58 @@ const ChosenSessionPage: React.FC = () => {
                     imageUrl={session.imageUrl}
                     clickable={false}
                 />
-            </div>
+                    </div>
 
             <div className="content-layout">
                 <BaseCard className="main-section">
                     <div className="section-header">
-                        <DefaultButton 
+                    <DefaultButton 
                             onClick={() => setMainContent('news')}
                             className={`toggle-button ${mainContent === 'news' ? 'active' : ''}`}
-                        >
-                            Новости
-                        </DefaultButton>
-                        <DefaultButton 
+                    >
+                        Новости
+                    </DefaultButton>
+                    <DefaultButton 
                             onClick={() => setMainContent('characters')}
                             className={`toggle-button ${mainContent === 'characters' ? 'active' : ''}`}
-                        >
-                            Персонажи
-                        </DefaultButton>
+                    >
+                        Персонажи
+                    </DefaultButton>
                     </div>
                     <div className="section-content">
                         {mainContent === 'news' ? (
                             <div className="news-content">
-                                {/* News content will be here */}
-                                <p>Здесь будут новости</p>
+                                {newsLoading ? (
+                                    <p>Загрузка новостей...</p>
+                                ) : newsError ? (
+                                    <p style={{ color: 'red' }}>Ошибка: {newsError}</p>
+                                ) : (
+                                    <>
+                                        <AddNewsCard 
+                                            sessionId={Number(id)} 
+                                            onNewsAdded={fetchNews}
+                                        />
+                                        {news.length === 0 ? (
+                                            <p>Новостей пока нет</p>
+                                        ) : (
+                                            news
+                                                .sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime())
+                                                .map(item => (
+                                                    <NewsCard
+                                                        key={item.id}
+                                                        id={item.id}
+                                                        title={item.title}
+                                                        content={item.content}
+                                                        dateTime={item.dateTime}
+                                                        imageUrl={item.imageUrl}
+                                                        isExpanded={expandedNews.includes(item.id)}
+                                                        onToggleExpand={() => toggleNewsExpand(item.id)}
+                                                        onNewsDeleted={fetchNews}
+                                                    />
+                                                ))
+                                        )}
+                                    </>
+                                )}
                             </div>
                         ) : (
                             <div className="characters-content">
@@ -122,8 +207,23 @@ const ChosenSessionPage: React.FC = () => {
                     <BaseCard className="section clans-section">
                         <h3>Кланы</h3>
                         <div className="section-content">
-                            {/* Clans content will be here */}
-                            <p>Здесь будут кланы</p>
+                            <AddClanCard 
+                                sessionId={Number(id)} 
+                                onClanAdded={fetchClans}
+                            />
+                            {clans
+                                .sort((a, b) => b.id - a.id)
+                                .map(clan => (
+                                    <ClanCard
+                                        key={clan.id}
+                                        id={clan.id}
+                                        name={clan.name}
+                                        description={clan.description}
+                                        isExpanded={expandedClans.includes(clan.id)}
+                                        onToggleExpand={() => toggleClanExpand(clan.id)}
+                                        onClanDeleted={fetchClans}
+                                    />
+                                ))}
                         </div>
                     </BaseCard>
 
