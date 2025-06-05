@@ -104,7 +104,7 @@ const SessionsPage: React.FC = () => {
             )}
 
             <button className="floating-button" onClick={() => setShowModal(true)}>
-                <img src="/icons/add_icon.svg" alt="Добавить"/>
+                <img src="/icons/ic_add.svg" alt="Добавить"/>
             </button>
 
             {showModal && (

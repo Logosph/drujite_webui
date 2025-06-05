@@ -10,8 +10,7 @@ import NewsCard from '../../components/NewsCard/NewsCard';
 import AddNewsCard from '../../components/NewsCard/AddNewsCard';
 import ClanCard from '../../components/ClanCard/ClanCard';
 import AddClanCard from '../../components/ClanCard/AddClanCard';
-import TimetableCard from '../../components/TimetableCard/TimetableCard';
-import AddTimetableCard from '../../components/TimetableCard/AddTimetableCard';
+import TimetableSection from '../../components/TimetableCard/TimetableSection';
 import './ChosenSessionPage.css';
 
 interface Session {
@@ -249,20 +248,10 @@ const ChosenSessionPage: React.FC = () => {
                     <BaseCard className="section schedule-section">
                         <h3>Расписание</h3>
                         <div className="section-content">
-                            <AddTimetableCard 
+                            <TimetableSection 
                                 sessionId={Number(id)} 
                                 onTimetableAdded={fetchTimetable}
                             />
-                            {timetable
-                                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                                .map(item => (
-                                    <TimetableCard
-                                        key={item.id}
-                                        id={item.id}
-                                        date={item.date}
-                                        onTimetableDeleted={fetchTimetable}
-                                    />
-                                ))}
                         </div>
                     </BaseCard>
                 </div>

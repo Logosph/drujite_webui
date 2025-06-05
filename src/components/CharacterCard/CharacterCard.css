@@ -89,9 +89,6 @@
     border-radius: 8px;
     padding: 16px;
     margin: 0;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .character-card__story.expanded,
@@ -100,19 +97,124 @@
     transform: translateY(0);
 }
 
-.character-card__story h4,
-.character-card__goals h4 {
-    margin: 0 0 12px 0;
+.character-card__story-header,
+.character-card__goals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.character-card__story-header h4,
+.character-card__goals-header h4 {
+    margin: 0;
     font-size: 16px;
     color: var(--on-surface);
     font-weight: 500;
 }
 
-.character-card__story p {
-    margin: 0;
+.character-card__edit-button,
+.character-card__add-goal-button,
+.character-card__goal-delete {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.character-card__edit-button:hover,
+.character-card__add-goal-button:hover,
+.character-card__goal-delete:hover {
+    background-color: var(--surface-container-low);
+}
+
+.character-card__edit-button img,
+.character-card__add-goal-button img,
+.character-card__goal-delete img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+}
+
+.character-card__save-button {
+    background: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.character-card__save-button:hover {
+    background-color: var(--primary-container);
+}
+
+.character-card__story-edit {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--outline);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--on-surface);
     font-size: 14px;
     line-height: 1.5;
+    resize: vertical;
+    margin-top: 8px;
+}
+
+.character-card__add-goal-form {
+    margin-bottom: 16px;
+}
+
+.character-card__add-goal-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--outline);
+    border-radius: 4px;
+    background: var(--surface);
     color: var(--on-surface);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.character-card__add-goal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.character-card__add-goal-submit,
+.character-card__add-goal-cancel {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.character-card__add-goal-submit {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+.character-card__add-goal-submit:hover {
+    background-color: var(--primary-container);
+}
+
+.character-card__add-goal-cancel {
+    background: var(--surface-container);
+    color: var(--on-surface);
+}
+
+.character-card__add-goal-cancel:hover {
+    background-color: var(--surface-container-high);
 }
 
 .character-card__goals-list {
@@ -146,6 +248,17 @@
 .character-card__goal.completed {
     background: var(--surface-container-low);
     color: var(--on-surface-variant);
+}
+
+.character-card__goal-name {
+    flex: 1;
+    margin-right: 8px;
+}
+
+.character-card__goal-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .character-card__goal-status {

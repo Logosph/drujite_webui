@@ -19,6 +19,7 @@
     margin-bottom: 8px;
     position: relative;
     padding: 0 8px;
+    cursor: pointer;
 }
 
 .timetable-card__date {
@@ -29,11 +30,15 @@
     flex: 1;
 }
 
-.timetable-card__delete-button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+.timetable-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.timetable-card__add-button,
+.timetable-card__delete-button,
+.timetable-card__event-delete {
     background: none;
     border: none;
     padding: 8px;
@@ -45,14 +50,160 @@
     transition: background-color 0.2s ease;
 }
 
-.timetable-card__delete-button:hover {
+.timetable-card__add-button:hover,
+.timetable-card__delete-button:hover,
+.timetable-card__event-delete:hover {
     background-color: var(--surface-container-low);
 }
 
-.timetable-card__delete-icon {
+.timetable-card__delete-icon,
+.timetable-card__add-button img,
+.timetable-card__event-delete img {
     width: 20px;
     height: 20px;
     opacity: 0.8;
+}
+
+.timetable-card__expand-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.timetable-card__expand-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.timetable-card__events {
+    margin-top: 16px;
+    padding: 0 8px;
+}
+
+.timetable-card__add-event-form {
+    background: var(--surface-container-highest);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.timetable-card__form-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.timetable-card__form-row:last-child {
+    margin-bottom: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timetable-card__time-input {
+    width: 120px;
+    padding: 8px;
+    border: 1px solid var(--outline);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--on-surface);
+    font-size: 14px;
+}
+
+.timetable-card__name-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--outline);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--on-surface);
+    font-size: 14px;
+}
+
+.timetable-card__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--on-surface);
+    font-size: 14px;
+}
+
+.timetable-card__form-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.timetable-card__submit-button,
+.timetable-card__cancel-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.timetable-card__submit-button {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+.timetable-card__submit-button:hover {
+    background-color: var(--primary-container);
+}
+
+.timetable-card__cancel-button {
+    background: var(--surface-container);
+    color: var(--on-surface);
+}
+
+.timetable-card__cancel-button:hover {
+    background-color: var(--surface-container-high);
+}
+
+.timetable-card__events-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.timetable-card__event {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: var(--surface-container);
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.timetable-card__event:hover {
+    background: var(--surface-container-high);
+}
+
+.timetable-card__event.is-title .timetable-card__event-name {
+    font-weight: 600;
+}
+
+.timetable-card__event-time {
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 500;
+    min-width: 60px;
+}
+
+.timetable-card__event-name {
+    flex: 1;
+    font-size: 14px;
+    color: var(--on-surface);
+}
+
+.timetable-card__no-events {
+    text-align: center;
+    color: var(--on-surface-variant);
+    font-size: 14px;
+    margin: 16px 0;
 }
 
 /* Стили для формы добавления даты */
