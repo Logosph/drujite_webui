@@ -240,6 +240,7 @@ const ChosenSessionPage: React.FC = () => {
                                         isExpanded={expandedClans.includes(clan.id)}
                                         onToggleExpand={() => toggleClanExpand(clan.id)}
                                         onClanDeleted={fetchClans}
+                                        sessionId={Number(id)}
                                     />
                                 ))}
                         </div>

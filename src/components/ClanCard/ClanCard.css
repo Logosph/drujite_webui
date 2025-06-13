@@ -165,4 +165,62 @@
 .add-clan-card .clan-card__submit-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.add-clan-card .clan-card__mode-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+.add-clan-card .clan-card__mode-button {
+    flex: 1;
+    padding: 8px 16px;
+    border: none;
+    background: var(--surface-container);
+    color: var(--on-surface);
+    border-radius: 100px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-clan-card .clan-card__mode-button:hover {
+    background: var(--surface-container-high);
+}
+
+.add-clan-card .clan-card__mode-button.active {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.add-clan-card .clan-card__add-existing {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 8px;
+}
+
+.add-clan-card .clan-card__select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--outline);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--on-surface);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.add-clan-card .clan-card__select:hover {
+    border-color: var(--outline-variant);
+}
+
+.add-clan-card .clan-card__loading,
+.add-clan-card .clan-card__no-clans {
+    text-align: center;
+    color: var(--on-surface-variant);
+    font-size: 14px;
+    margin: 16px 0;
 } 

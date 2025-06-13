@@ -10,6 +10,7 @@ interface ClanCardProps {
     isExpanded: boolean;
     onToggleExpand: () => void;
     onClanDeleted: () => void;
+    sessionId: number;
 }
 
 const ClanCard: React.FC<ClanCardProps> = ({ 
@@ -18,16 +19,22 @@ const ClanCard: React.FC<ClanCardProps> = ({
     description, 
     isExpanded, 
     onToggleExpand,
-    onClanDeleted 
+    onClanDeleted,
+    sessionId
 }) => {
     const handleDelete = async (e: React.MouseEvent) => {
         e.stopPropagation();
-        if (window.confirm('Вы уверены, что хотите удалить этот клан?')) {
+        if (window.confirm('Вы уверены, что хотите открепить этот клан от сессии?')) {
             try {
-                await api.delete(`/api/v1/clan?id=${id}`);
+                await api.delete('/api/v1/clan/delete-from-session', {
+                    data: {
+                        clanId: id,
+                        sessionId
+                    }
+                });
                 onClanDeleted();
             } catch (err) {
-                alert('Ошибка при удалении клана');
+                alert('Ошибка при откреплении клана');
                 console.error(err);
             }
         }
@@ -44,7 +51,7 @@ const ClanCard: React.FC<ClanCardProps> = ({
                     >
                         <img 
                             src="/icons/ic_delete.svg" 
-                            alt="Удалить" 
+                            alt="Открепить" 
                             className="clan-card__delete-icon"
                         />
                     </button>
